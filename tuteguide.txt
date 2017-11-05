@@ -1,0 +1,5 @@
+djangobyexample
+
+pip install Django==1.8.6
+
+django.version
