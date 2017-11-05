@@ -18,3 +18,13 @@ python manage.py runserver
 python manage.py runserver 127.0.0.1:8001 --settings=mysite.settings
 
 python manage.py startapp blog
+
+pip install pytz
+
+python manage.py makemigrations blog
+
+python manage.py sqlmigrate blog 0001
+
+python manage.py createsuperuser
+
+https://docs.djangoproject.com/en/1.8/ref/models/fields/
