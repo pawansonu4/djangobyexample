@@ -28,3 +28,53 @@ python manage.py sqlmigrate blog 0001
 python manage.py createsuperuser
 
 https://docs.djangoproject.com/en/1.8/ref/models/fields/
+
+python manage.py shell
+
+Working with query sets and managers
+ORM
+from django.contrib.auth.models import User
+from blog.models import Post
+user=User.objects.get(username='admin')
+#Direct
+Post.objects.create(title='One more post', slug='one-more-post',body='Pst body.', author=user)
+DoesnotExist exception
+Multiobjectreturned Exception
+
+
+#Indirect (object in memory not persist in database
+post=Post(title='Another post', slug='another-post', body='Post body', author=user)
+post.save()
+
+post.title='new title'
+post.save()
+
+QuerySet
+Defaultmanager
+Model Manager
+Lazy
+
+Post.objects.all()
+
+Post.objects.filter(publish__year=2017)
+
+Post.objects.filter(publish__year=2017, author__username='admin')
+double underscore
+
+Post.objects.filter(publish__year=2017).exclude(title__startswith='One')
+
+Post.objects.order_by('title')
+
+get
+post.delete()
+
+
+When are query sets evaluated
+slice them Post.objects.all()[:3]
+pickel or cache them
+Call repr() or len() on them
+Call list on them
+etc
+
+check
+
